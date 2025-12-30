@@ -56,6 +56,7 @@ class DB(Enum):
     AliSQL = "AlibabaCloudRDSMySQL"
     Doris = "Doris"
     TurboPuffer = "TurboPuffer"
+    HAKES = "HAKES"
 
     @property
     def init_cls(self) -> type[VectorDB]:  # noqa: PLR0911, PLR0912, C901, PLR0915
@@ -227,6 +228,11 @@ class DB(Enum):
             from .alisql.alisql import AliSQL
 
             return AliSQL
+
+        if self == DB.HAKES:
+            from .hakes.hakes import HakesClient
+
+            return HakesClient
 
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
@@ -402,6 +408,11 @@ class DB(Enum):
 
             return AliSQLConfig
 
+        if self == DB.HAKES:
+            from .hakes.config import HAKESConfig
+
+            return HAKESConfig
+
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
 
@@ -550,6 +561,11 @@ class DB(Enum):
             from .turbopuffer.config import TurboPufferIndexConfig
 
             return TurboPufferIndexConfig
+
+        if self == DB.HAKES:
+            from .hakes.config import HAKESCaseConfig
+
+            return HAKESCaseConfig
 
         # DB.Pinecone, DB.Chroma, DB.Redis
         return EmptyDBCaseConfig
