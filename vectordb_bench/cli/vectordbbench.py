@@ -11,6 +11,7 @@ from ..backend.clients.elastic_cloud.cli import (
     ElasticCloudHNSWInt8,
 )
 from ..backend.clients.hakes.cli import HAKES
+from ..backend.clients.hakessearch.cli import HAKESSEARCH
 from ..backend.clients.hologres.cli import HologresHGraph
 from ..backend.clients.lancedb.cli import LanceDB
 from ..backend.clients.mariadb.cli import MariaDBHNSW
@@ -72,6 +73,7 @@ cli.add_command(AliSQLHNSW)
 cli.add_command(Doris)
 cli.add_command(TurboPuffer)
 cli.add_command(HAKES)
+cli.add_command(HAKESSEARCH)
 
 
 if __name__ == "__main__":

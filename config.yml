@@ -1,0 +1,32 @@
+milvushnsw:
+  - case_type: Performance768D1M
+    uri: http://localhost:19530
+    m: 16
+    ef_construction: 128
+    ef_search: 128
+    drop_old: True
+    load: True
+    num_concurrency: "1,5"
+# hakes:
+#   - host: localhost
+#     port: 8080
+#     case_type: Performance768D1M
+#     metric_type: IP
+#     nprobe: 32
+#     k_factor: 8
+#     k: 10
+#     drop_old: True
+#     load: True
+#     num_concurrency: "1,5"
+# hakessearch:
+#   - host: localhost
+#     port: 8081
+#     case_type: Performance768D1M
+#     metric_type: IP
+#     nprobe: 32
+#     k_factor: 8
+#     k: 10
+#     drop_old: True
+#     load: True
+#     num_concurrency: "1,5"
+#     skip_search_serial: True

@@ -57,6 +57,7 @@ class DB(Enum):
     Doris = "Doris"
     TurboPuffer = "TurboPuffer"
     HAKES = "HAKES"
+    HAKESSEARCH = "HAKESSEARCH"
 
     @property
     def init_cls(self) -> type[VectorDB]:  # noqa: PLR0911, PLR0912, C901, PLR0915
@@ -233,6 +234,11 @@ class DB(Enum):
             from .hakes.hakes import HakesClient
 
             return HakesClient
+
+        if self == DB.HAKESSEARCH:
+            from .hakessearch.hakes import HakesSearchClient
+
+            return HakesSearchClient
 
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
@@ -413,6 +419,11 @@ class DB(Enum):
 
             return HAKESConfig
 
+        if self == DB.HAKESSEARCH:
+            from .hakessearch.config import HAKESSearchConfig
+
+            return HAKESSearchConfig
+
         msg = f"Unknown DB: {self.name}"
         raise ValueError(msg)
 
@@ -566,6 +577,11 @@ class DB(Enum):
             from .hakes.config import HAKESCaseConfig
 
             return HAKESCaseConfig
+
+        if self == DB.HAKESSEARCH:
+            from .hakessearch.config import HAKESSearchCaseConfig
+
+            return HAKESSearchCaseConfig
 
         # DB.Pinecone, DB.Chroma, DB.Redis
         return EmptyDBCaseConfig
